@@ -8,6 +8,4 @@ This project is being developed by me to demonstrate features of my servlet fram
 - DBCP
 ## Now implemented
 
-## Projects which will be written using this framework
-Link to a project that will be demonstrate framework features will be here :)
 
