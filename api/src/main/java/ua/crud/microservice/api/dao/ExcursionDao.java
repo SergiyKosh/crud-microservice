@@ -42,8 +42,20 @@ public class ExcursionDao implements Dao<Excursion> {
     }
 
     @Override
-    public void update(Excursion entity) {
-
+    public void update(Excursion excursion) {
+        try (
+                Connection conn = ConnectionFactory.getInstance().getConnection();
+                PreparedStatement ps = conn.prepareStatement(UPDATE_EXCURSION)
+        ) {
+            ps.setString(1, excursion.getName());
+            ps.setString(2, excursion.getCategory());
+            ps.setString(3, excursion.getCity());
+            ps.setString(4, excursion.getDescription());
+            ps.setLong(5, excursion.getExcursionId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

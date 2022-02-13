@@ -45,6 +45,37 @@ public class ExcursionService {
         dao.insert(excursion);
     }
 
+    public void update() throws IOException {
+        StringBuilder str = new StringBuilder();
+        int counter;
+
+        while ((counter = DispatcherServlet.request.getInputStream().read()) != -1) {
+            str.append((char) counter);
+        }
+
+        String[] params = str.toString().split("&");
+        Object[] paramsObj = Arrays.stream(params)
+                .map(s -> s.replaceAll("excursionId=", "")
+                        .replaceAll("name=", "")
+                        .replaceAll("category=", "")
+                        .replaceAll("city=", "")
+                        .replaceAll("description=", "")
+                        .replaceAll("%20", " ")
+                ).toArray();
+
+        params = Arrays.copyOf(paramsObj, paramsObj.length, String[].class);
+
+        Excursion excursion = Excursion.builder()
+                .excursionId(Long.parseLong(params[0]))
+                .name(params[1])
+                .category(params[2])
+                .city(params[3])
+                .description(params[4])
+                .build();
+
+        dao.update(excursion);
+    }
+
     public List<Excursion> findAll() {
         return dao.findAll();
     }

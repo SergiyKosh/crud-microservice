@@ -10,4 +10,8 @@ public class SQLQueries {
     public static final String CREATE_EXCURSION = "INSERT INTO " + TABLE_EXCURSIONS + "("
             + EXCURSION_NAME + ", " + EXCURSION_CATEGORY + ", " + EXCURSION_CITY + ", " + EXCURSION_DESCRIPTION + ") VALUES(?, ?, ?, ?)";
     public static final String READ_ALL_EXCURSIONS = "SELECT * FROM " + TABLE_EXCURSIONS;
+
+    public static final String UPDATE_EXCURSION = "UPDATE " + TABLE_EXCURSIONS + " SET " +
+            EXCURSION_NAME + "=?," + EXCURSION_CATEGORY + "=?," + EXCURSION_CITY + "=?," + EXCURSION_DESCRIPTION + "=?" +
+            " WHERE " + EXCURSION_ID + "=?";
 }
