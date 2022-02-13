@@ -1,11 +1,11 @@
 package ua.crud.microservice.api.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import simpleservletframework.core.annotation.annotation.component.Autowired;
-import simpleservletframework.core.annotation.annotation.component.Service;
-import simpleservletframework.mvc.servlet.DispatcherServlet;
 import ua.crud.microservice.api.dao.ExcursionDao;
 import ua.crud.microservice.api.entity.Excursion;
+import ua.simpleservletframework.core.annotation.annotation.component.Autowired;
+import ua.simpleservletframework.core.annotation.annotation.component.Service;
+import ua.simpleservletframework.mvc.servlet.DispatcherServlet;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class ExcursionService {
                         .replaceAll("category=", "")
                         .replaceAll("city=", "")
                         .replaceAll("description=", "")
-                        .replaceAll("%20", "")
+                        .replaceAll("%20", " ")
                 ).toArray();
 
         params = Arrays.copyOf(paramsObj, paramsObj.length, String[].class);

@@ -1,8 +1,8 @@
 package ua.crud.microservice.api.dao;
 
-import simpleservletframework.data.factory.ConnectionFactory;
 import ua.crud.microservice.api.entity.Excursion;
-import simpleservletframework.data.annotation.annotation.ComponentDao;
+import ua.simpleservletframework.data.annotation.annotation.ComponentDao;
+import ua.simpleservletframework.data.factory.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
