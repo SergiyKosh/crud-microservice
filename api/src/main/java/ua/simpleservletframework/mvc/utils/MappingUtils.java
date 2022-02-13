@@ -154,6 +154,8 @@ public class MappingUtils {
             return method.getAnnotation(DeleteMapping.class).value();
         } else if (request.getMethod().equals(RequestMethod.OPTIONS)) {
             return method.getAnnotation(OptionsMapping.class).value();
+        } else if (request.getMethod().equals(RequestMethod.PATCH)) {
+            return method.getAnnotation(PatchMapping.class).value();
         } else {
             throw new RuntimeException(UNKNOWN_REQUEST_TYPE);
         }

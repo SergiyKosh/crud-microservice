@@ -17,7 +17,6 @@ public class ExcursionService {
     private ExcursionDao dao;
 
     public void insert() throws IOException {
-        ObjectMapper om = new ObjectMapper();
         StringBuilder str = new StringBuilder();
         int counter;
 

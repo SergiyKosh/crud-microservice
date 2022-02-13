@@ -91,8 +91,10 @@ public class MappingAnnotationProcessor {
                                     return m.isAnnotationPresent(PutMapping.class);
                                 } else if (request.getMethod().equals(DELETE)) {
                                     return m.isAnnotationPresent(DeleteMapping.class);
-                                } else {
+                                } else if (request.getMethod().equals(OPTIONS)) {
                                     return m.isAnnotationPresent(OptionsMapping.class);
+                                } else {
+                                    return m.isAnnotationPresent(PatchMapping.class);
                                 }
                             })
                             .findFirst()
@@ -141,6 +143,8 @@ public class MappingAnnotationProcessor {
                     mapping.isAnnotationPresent(PutMapping.class)
                             || mapping.isAnnotationPresent(PostMapping.class)
                             || mapping.isAnnotationPresent(DeleteMapping.class)
+                            || mapping.isAnnotationPresent(PatchMapping.class)
+                            || mapping.isAnnotationPresent(OptionsMapping.class)
             ) {
                 otherRequestTypesHandler(controller, mapping);
             }
