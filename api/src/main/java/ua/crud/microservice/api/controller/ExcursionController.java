@@ -1,7 +1,6 @@
 package ua.crud.microservice.api.controller;
-import lombok.SneakyThrows;
 import ua.crud.microservice.api.entity.Excursion;
-import ua.crud.microservice.api.service.ExcursionService;
+import ua.crud.microservice.api.service.ExcursionManageService;
 import ua.simpleservletframework.core.annotation.annotation.component.Autowired;
 import ua.simpleservletframework.mvc.annotation.annotation.controller.RestController;
 import ua.simpleservletframework.mvc.annotation.annotation.mapping.GetMapping;
@@ -15,7 +14,7 @@ import java.util.List;
 @RestController("/api/excursions")
 public class ExcursionController {
     @Autowired
-    private ExcursionService excursionService;
+    private ExcursionManageService excursionService;
 
     @GetMapping
     public List<Excursion> getExcursions() {
