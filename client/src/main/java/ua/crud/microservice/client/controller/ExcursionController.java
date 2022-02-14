@@ -1,12 +1,19 @@
 package ua.crud.microservice.client.controller;
 
-import simpleservletframework.mvc.annotation.annotation.controller.Controller;
-import simpleservletframework.mvc.annotation.annotation.mapping.GetMapping;
+import ua.crud.microservice.client.service.ExcursionService;
+import ua.simpleservletframework.core.annotation.annotation.component.Autowired;
+import ua.simpleservletframework.mvc.annotation.annotation.controller.Controller;
+import ua.simpleservletframework.mvc.annotation.annotation.mapping.GetMapping;
 
-@Controller("/excursions")
+import java.io.IOException;
+
+@Controller("/client/excursions")
 public class ExcursionController {
+    @Autowired
+    private ExcursionService service;
+
     @GetMapping
-    public String getExcursions() {
-        return "home";
+    public String getExcursions() throws IOException {
+        return service.findAll();
     }
 }

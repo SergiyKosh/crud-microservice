@@ -10,7 +10,7 @@ import ua.simpleservletframework.mvc.annotation.annotation.mapping.PutMapping;
 import java.io.IOException;
 import java.util.List;
 
-@RestController("/excursions")
+@RestController("/api/excursions")
 public class ExcursionController {
     @Autowired
     private ExcursionService excursionService;
@@ -21,8 +21,9 @@ public class ExcursionController {
     }
 
     @PutMapping
-    public String createExcursion() {
-        return "redirect:/excursions";
+    public String createExcursion() throws IOException {
+        excursionService.insert();
+        return "redirect:http://localhost:8080/client/excursions";
     }
 
     @PatchMapping
