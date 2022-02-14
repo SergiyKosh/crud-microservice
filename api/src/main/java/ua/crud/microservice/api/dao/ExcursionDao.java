@@ -64,10 +64,11 @@ public class ExcursionDao implements Dao<Excursion> {
 
         try (
                 Connection conn = ConnectionFactory.getInstance().getConnection();
-                Statement st = conn.createStatement()
+                PreparedStatement st = conn.prepareStatement(GET_EXCURSION_BY_ID)
         ) {
-            ResultSet rs = st.executeQuery(READ_ALL_EXCURSIONS);
-            while (rs.next()) {
+            st.setLong(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
                 excursion = Excursion.builder()
                         .excursionId(rs.getLong(EXCURSION_ID))
                         .name(rs.getString(EXCURSION_NAME))

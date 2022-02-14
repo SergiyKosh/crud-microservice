@@ -14,4 +14,6 @@ public class SQLQueries {
     public static final String UPDATE_EXCURSION = "UPDATE " + TABLE_EXCURSIONS + " SET " +
             EXCURSION_NAME + "=?," + EXCURSION_CATEGORY + "=?," + EXCURSION_CITY + "=?," + EXCURSION_DESCRIPTION + "=?" +
             " WHERE " + EXCURSION_ID + "=?";
+
+    public static final String GET_EXCURSION_BY_ID = "SELECT * FROM " + TABLE_EXCURSIONS + " WHERE " + EXCURSION_ID + "=?";
 }

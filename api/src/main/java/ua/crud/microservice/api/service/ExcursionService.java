@@ -1,6 +1,7 @@
 package ua.crud.microservice.api.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import ua.crud.microservice.api.dao.ExcursionDao;
 import ua.crud.microservice.api.entity.Excursion;
 import ua.simpleservletframework.core.annotation.annotation.component.Autowired;
@@ -8,6 +9,7 @@ import ua.simpleservletframework.core.annotation.annotation.component.Service;
 import ua.simpleservletframework.mvc.servlet.DispatcherServlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +18,8 @@ public class ExcursionService {
     @Autowired
     private ExcursionDao dao;
 
-    public void insert() throws IOException {
+    @SneakyThrows
+    public void insert() {
         StringBuilder str = new StringBuilder();
         int counter;
 
@@ -45,7 +48,8 @@ public class ExcursionService {
         dao.insert(excursion);
     }
 
-    public void update() throws IOException {
+    @SneakyThrows
+    public void update() {
         StringBuilder str = new StringBuilder();
         int counter;
 
@@ -74,6 +78,12 @@ public class ExcursionService {
                 .build();
 
         dao.update(excursion);
+    }
+
+    @SneakyThrows
+    public Excursion read(String idStr) {
+        long id = Long.parseLong(idStr);
+        return dao.read(id);
     }
 
     public List<Excursion> findAll() {

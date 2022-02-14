@@ -4,6 +4,7 @@ import ua.crud.microservice.client.service.ExcursionService;
 import ua.simpleservletframework.core.annotation.annotation.component.Autowired;
 import ua.simpleservletframework.mvc.annotation.annotation.controller.Controller;
 import ua.simpleservletframework.mvc.annotation.annotation.mapping.GetMapping;
+import ua.simpleservletframework.mvc.annotation.annotation.url.PathVariable;
 
 import java.io.IOException;
 
@@ -15,5 +16,10 @@ public class ExcursionController {
     @GetMapping
     public String getExcursions() throws IOException {
         return service.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public String getExcursion(@PathVariable String id) {
+        return service.get(id);
     }
 }

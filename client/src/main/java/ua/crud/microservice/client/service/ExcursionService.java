@@ -30,8 +30,21 @@ public class ExcursionService implements ApplicationService<Excursion> {
     }
 
     @Override
-    public void get(long id) {
+    public String get(String idStr) {
+        Excursion excursion;
+        ObjectMapper om = new ObjectMapper();
 
+        try {
+            excursion = om.readValue(new URL("http://127.0.0.1:8080/api/excursions/" + idStr), Excursion.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Model model = new Model();
+
+        model.addAttribute("excursion", Optional.ofNullable(excursion).orElse(new Excursion()));
+
+        return "excursion";
     }
 
     @Override

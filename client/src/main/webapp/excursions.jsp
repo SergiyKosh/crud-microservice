@@ -61,17 +61,14 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body" style="background-color: #2d333b;">
-                            <a href="/api/excursion/${excursion.getExcursionId()}" class="text-white">
+                            <a href="/client/excursions/${excursion.getExcursionId()}" class="text-white">
                                 <h5 class="card-title text-white">${excursion.getName()}</h5>
                             </a>
-                            <small class="text-white">Category: ${excursion.getCategory()}</small>
+                            <small class="text-secondary">Category: ${excursion.getCategory()}</small>
                             <br/>
-                            <small class="text-white">City: ${excursion.getCity()}</small>
-                            <p class="card-text text-white">${excursion.getDescription()}</p>
-                            <a href="/api/excursion/${excursion.getExcursionId()}" class="btn btn-link">
-                                <small>More about</small>
-                            </a>
-                            </p>
+                            <small class="text-secondary">City: ${excursion.getCity()}</small>
+                            <br/>
+                            <small class="card-text text-secondary">Description: ${excursion.getDescription()}</small>
                         </div>
                     </div>
                 </div>
